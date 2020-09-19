@@ -41,7 +41,7 @@ class AuthRouter {
     }
 
     fun login(context: Context?, bundle: Bundle? = null) {
-        context?.startActivity(context.intent(RegisterActivity::class.java).apply {
+        context?.startActivity(context.intent(LoginActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

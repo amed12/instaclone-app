@@ -38,5 +38,7 @@
     <string name="lbl_register_account">Register Account</string>
     <string name="question_have_account">Already have an account ?</string>
     <string name="btn_login">Login</string>
+    <string name="btn_sign_up">Sign Up.</string>
+    <string name="question_havent_account">Don\'t have an account?</string>
 
 </resources>

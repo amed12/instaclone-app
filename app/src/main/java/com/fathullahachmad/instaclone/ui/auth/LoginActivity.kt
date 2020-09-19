@@ -19,20 +19,20 @@ import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.fathullahachmad.instaclone.R
 import com.fathullahachmad.instaclone.ui.ui.login.LoggedInUserView
 import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModel
 import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModelFactory
+import com.fathullahachmad.instaclone.utils.intent
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -41,10 +41,10 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
-
-
+        tv_go_to_register?.setOnClickListener {
+            startActivity(intent(RegisterActivity::class.java))
+        }
         val login = findViewById<Button>(R.id.login)
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
@@ -54,13 +54,32 @@ class LoginActivity : AppCompatActivity() {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
-            login.isEnabled = loginState.isDataValid
+            login.apply {
+                if (loginState.isDataValid) {
+                    isEnabled = true
+                    background.setTint(
+                        ContextCompat.getColor(
+                            this@LoginActivity,
+                            R.color.colorAccent
+                        )
+                    )
+                } else {
+                    isEnabled = false
+                    background.setTint(
+                        ContextCompat.getColor(
+                            this@LoginActivity,
+                            R.color.colorAccentSecondary
+                        )
+                    )
+                }
+
+            }
 
             if (loginState.usernameError != null) {
-                til_username_register.error = getString(loginState.usernameError)
+                til_username_login.error = getString(loginState.usernameError)
             }
             if (loginState.passwordError != null) {
-                til_password_register.error = getString(loginState.passwordError)
+                til_password_login.error = getString(loginState.passwordError)
             }
         })
 
