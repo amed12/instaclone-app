@@ -13,15 +13,15 @@
  *  limitations under the License.
  */
 
-package com.fathullahachmad.instaclone.ui
+package com.fathullahachmad.instaclone.ui.auth
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.fathullahachmad.instaclone.R
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_register)
     }
 }

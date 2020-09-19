@@ -59,4 +59,47 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TextStyle.Caption.Accent" parent="SFProFont.Regular">
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Caption.Blue2.SemiBold" parent="SFProFont.SemiBold">
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:textColor">@color/blue_2</item>
+    </style>
+
+    <style name="TextStyle.Caption.Grey3" parent="SFProFont.Regular">
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:textColor">@color/grey_3</item>
+    </style>
+
+    <style name="TextStyle.Subtitle2.Black.Bold" parent="SFProFont.Bold">
+        <item name="android:textSize">@dimen/font_subtitle_2</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Headline6.Black.Bold" parent="SFProFont.Bold">
+        <item name="android:textSize">@dimen/font_headline_6</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Subtitle1.Black.Bold" parent="SFProFont.Bold">
+        <item name="android:textSize">@dimen/font_subtitle_1</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="Widget.AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextAppearance">@style/TextStyle.Caption.Accent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxCornerRadiusBottomEnd">5dp</item>
+        <item name="boxCornerRadiusBottomStart">5dp</item>
+        <item name="boxCornerRadiusTopEnd">5dp</item>
+        <item name="boxCornerRadiusTopStart">5dp</item>
+        <item name="android:layout_margin">@dimen/margin_padding_xnormal</item>
+    </style>
+
+
 </resources>

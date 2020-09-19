@@ -13,15 +13,10 @@
  *  limitations under the License.
  */
 
-package com.fathullahachmad.instaclone.ui
+package com.fathullahachmad.instaclone.utils
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.fathullahachmad.instaclone.R
+import com.fathullahachmad.instaclone.ui.auth.AuthRouter
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
-    }
+class AppWireframe {
+    val common by lazy { AuthRouter() }
 }

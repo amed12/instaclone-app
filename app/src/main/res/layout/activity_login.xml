@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?><!--
+      ~ Copyright (C) 2020 Achmad Fathullah - PDA
+      ~  Licensed under the Apache License, Version 2.0 (the "License");
+      ~  you may not use this file except in compliance with the License.
+      ~  You may obtain a copy of the License at
+      ~
+      ~  http://www.apache.org/licenses/LICENSE-2.0
+      ~
+      ~  Unless required by applicable law or agreed to in writing, software
+      ~  distributed under the License is distributed on an "AS IS" BASIS,
+      ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      ~  See the License for the specific language governing permissions and
+      ~  limitations under the License.
+      -->
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_register"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_xxxlarge"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/cd_default_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_instagram_logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_username_register"
+                style="@style/Widget.AppTheme.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_xnormal"
+                android:hint="@string/hint_username"
+                app:layout_constraintTop_toBottomOf="@id/iv_register">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_username_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password_register"
+                style="@style/Widget.AppTheme.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_xnormal"
+                android:hint="@string/hint_password"
+                app:layout_constraintTop_toBottomOf="@id/til_username_register"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:textAppearance="@style/TextStyle.Subtitle2.Black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_xnormal"
+                android:backgroundTint="@color/colorAccent"
+                android:fontFamily="@font/sf_ui_bold"
+                android:padding="@dimen/margin_padding_normal"
+                android:text="@string/btn_login"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/divider_register_grey"
+                app:layout_constraintTop_toBottomOf="@id/til_password_register"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="22dp" />
+
+            <View
+                android:id="@+id/divider_register_grey"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/margin_padding_xxxlarge"
+                android:layout_marginBottom="?attr/actionBarSize"
+                android:background="@color/grey_4"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_question_register"
+                style="@style/TextStyle.Caption.Grey3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_xxlarge"
+                android:layout_marginTop="@dimen/margin_padding_normal"
+                android:layout_marginBottom="@dimen/margin_padding_normal"
+                android:text="@string/question_have_account"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/til_password_register"
+                app:layout_constraintTop_toBottomOf="@id/divider_register_grey" />
+
+            <TextView
+                android:id="@+id/tv_back_to_login"
+                style="@style/TextStyle.Caption.Blue2.SemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_padding_small"
+                android:text="@string/btn_log_in"
+                app:layout_constraintEnd_toEndOf="@id/til_password_register"
+                app:layout_constraintStart_toEndOf="@+id/tv_question_register"
+                app:layout_constraintTop_toTopOf="@id/tv_question_register" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

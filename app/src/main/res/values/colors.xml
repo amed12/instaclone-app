@@ -15,9 +15,13 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#F8FAF9</color>
+    <color name="colorPrimaryDark">#babdbe</color>
+    <color name="colorPrimaryLight">#eceff1</color>
+    <color name="colorAccent">#3B96F1</color>
+    <color name="colorAccentSecondary">#C4E0F8</color>
+    <color name="primaryText">#757575</color>
+    <color name="secondaryText">#757575</color>
 
     <color name="white">#FFFFFF</color>
     <color name="transparent80White">#E6FFFFFF</color>
@@ -38,6 +42,7 @@
     <color name="lightGrey">#BDBDBD</color>
     <color name="blueGrey">#A5B7C6</color>
     <color name="blue_1">#3C3C6D</color>
+    <color name="blue_2">#06385E</color>
     <color name="purple">#9B51E0</color>
     <color name="porcelain">#F7F8F9</color>
     <color name="darkPurple">#FF6A3093</color>
