@@ -32,6 +32,7 @@ import com.fathullahachmad.instaclone.R
 import com.fathullahachmad.instaclone.ui.ui.login.LoggedInUserView
 import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModel
 import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModelFactory
+import com.fathullahachmad.instaclone.utils.AppWireframe
 import com.fathullahachmad.instaclone.utils.intent
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -63,6 +64,10 @@ class LoginActivity : AppCompatActivity() {
                             R.color.colorAccent
                         )
                     )
+                    val wireframe = AppWireframe().common
+                    setOnClickListener {
+                        wireframe.main(this@LoginActivity)
+                    }
                 } else {
                     isEnabled = false
                     background.setTint(
@@ -71,6 +76,9 @@ class LoginActivity : AppCompatActivity() {
                             R.color.colorAccentSecondary
                         )
                     )
+                    setOnClickListener {
+                        //
+                    }
                 }
 
             }

@@ -40,5 +40,12 @@
     <string name="btn_login">Login</string>
     <string name="btn_sign_up">Sign Up.</string>
     <string name="question_havent_account">Don\'t have an account?</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_post">Post</string>
+    <string name="lbl_bookmark">Bookmark</string>
+    <string name="lbl_user_profile">User Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

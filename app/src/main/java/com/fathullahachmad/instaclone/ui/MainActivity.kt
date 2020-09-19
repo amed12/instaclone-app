@@ -17,11 +17,32 @@ package com.fathullahachmad.instaclone.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.fathullahachmad.instaclone.R
+import com.fathullahachmad.instaclone.utils.isVisible
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main2.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+        if (savedInstanceState == null) setupView()
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupView()
+    }
+
+    private fun setupView() {
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
+        navView.setupWithNavController(navController)
+    }
+
+    fun showBottomNav(visibleToUser: Boolean) {
+        nav_view?.isVisible(visibleToUser)
     }
 }
