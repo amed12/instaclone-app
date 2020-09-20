@@ -82,6 +82,7 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.github.mobileVascomm:VascWork-Android:v1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
