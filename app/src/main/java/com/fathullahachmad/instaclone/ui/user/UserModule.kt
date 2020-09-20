@@ -21,7 +21,6 @@ import com.fathullahachmad.instaclone.data.pref.AppSession
 import com.fathullahachmad.instaclone.utils.connectionProblemMessage
 import com.fathullahachmad.instaclone.utils.errorMessage
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.vascomm.vascwork.architecture.core.Module
 import com.vascomm.vascwork.architecture.core.ViewStateInterface
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +36,6 @@ interface IUserModule {
 class UserModule(context: Context, viewState: ViewStateInterface) : Module(viewState, context),
     IUserModule {
     private val firebaseAuth by lazy { FirebaseAuth.getInstance() }
-    private val mDatabase by lazy { FirebaseDatabase.getInstance().reference.child("Users") }
     private val session by lazy { AppSession(context) }
 
     companion object {

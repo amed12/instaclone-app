@@ -35,6 +35,9 @@ class UserFragment : Fragment(R.layout.fragment_user), DialogListener, ViewState
     private val userModule by lazy { context?.let { UserModule(it, this) } }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userModule?.getUsers()?.apply {
+            tv_title_appbar_detail_info?.text = username
+        }
         btn_menu?.setOnClickListener {
             dialogPopUp?.show(mutableListOf(KEY_LOG_OUT), true, isCancelable = true)
         }

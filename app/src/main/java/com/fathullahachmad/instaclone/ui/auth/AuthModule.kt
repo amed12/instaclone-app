@@ -19,6 +19,8 @@ import android.content.Context
 import com.fathullahachmad.instaclone.data.model.Users
 import com.fathullahachmad.instaclone.data.pref.AppSession
 import com.fathullahachmad.instaclone.data.pref.AppSession.Companion.KEY_LOGIN
+import com.fathullahachmad.instaclone.data.pref.AppSession.Companion.KEY_TOKEN
+import com.fathullahachmad.instaclone.data.pref.AppSession.Companion.KEY_USER
 import com.fathullahachmad.instaclone.utils.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -65,13 +67,20 @@ class AuthModule(context: Context, viewState: ViewStateInterface) : Module(viewS
                                             ValueEventListener {
                                             override fun onDataChange(snapshot: DataSnapshot) {
                                                 if (snapshot.hasChild(userId)) {
-                                                    snapshot.getValue(Users::class.java)
-                                                        ?.objectToJsonObjectString()
-                                                        ?.stringJsonToJsonObject()?.let { it1 ->
-                                                            session.createSession(
-                                                                it1
-                                                            )
-                                                        }
+//                                                    snapshot.getValue(Users::class.java)
+//                                                        ?.objectToJsonObjectString()
+//                                                        ?.stringJsonToJsonObject()?.let { it1 ->
+//                                                            session.createSession(
+//                                                                it1
+//                                                            )
+//                                                        }
+                                                    session.putString(
+                                                        KEY_USER,
+                                                        snapshot.child(userId)
+                                                            .getValue(Users::class.java)
+                                                            ?.objectToJsonObjectString().toString()
+                                                    )
+                                                    session.putString(KEY_TOKEN, userId)
                                                     session.putBoolean(KEY_LOGIN, true)
                                                     it.loading(isLoading = false)
                                                     it.success(message = "success")

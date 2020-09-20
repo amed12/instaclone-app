@@ -37,16 +37,9 @@ class AppSession(context: Context) {
         const val KEY_INTRO = "intro"
     }
 
-    /* store user data and token*/
-    fun createSession(dataUser: JSONObject) {
-        edit.apply {
-            putString(KEY_USER, dataUser.toString())
-            commit()
-        }
-    }
-
     fun destroySession() {
         edit.remove(KEY_USER)
+        edit.remove(KEY_TOKEN)
         putBoolean(KEY_LOGIN, false)
     }
 
