@@ -13,13 +13,16 @@
  *  limitations under the License.
  */
 
-package com.fathullahachmad.instaclone.ui.ui.login
+package com.fathullahachmad.instaclone.utils.viewholder
 
-/**
- * Data validation state of the login form.
- */
-data class LoginFormState(
-    val usernameError: Int? = null,
-    val passwordError: Int? = null,
-    val isDataValid: Boolean = false
-)
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_list.view.*
+
+class ListDialogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun bind(itemList: String) {
+        itemView.apply {
+            txt_item.text = itemList
+        }
+    }
+}

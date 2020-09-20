@@ -23,6 +23,7 @@ const val KEY_DATA = "data"
 const val KEY_MESSAGE = "message"
 const val KEY_STATUS = "status"
 const val KEY_CODE = "code"
+const val KEY_LOG_OUT = "log-out"
 
 //Data network
 const val KEY_USERNAME = "username"
@@ -33,7 +34,6 @@ const val KEY_PHONE = "phone"
 const val KEY_GENDER = "gender"
 const val KEY_IMAGE_PROFILE = "image-profile"
 const val KEY_EMAIL = "email"
-
 const val KEY_PASS = "pass"
 
 

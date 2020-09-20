@@ -16,6 +16,8 @@
 package com.fathullahachmad.instaclone.data.pref
 
 import android.content.Context
+import com.fathullahachmad.instaclone.data.model.Users
+import com.fathullahachmad.instaclone.utils.toObject
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -55,6 +57,11 @@ class AppSession(context: Context) {
     fun putBoolean(key: String, status: Boolean) {
         edit.putBoolean(key, status)
         edit.apply()
+    }
+
+    fun getUsers(): Users {
+        val sessionData = session.getString(KEY_USER, "")
+        return JSONObject(sessionData.toString()).toObject(Users::class.java, false)
     }
 
     fun getBoolean(key: String, defaultValue: Boolean = false) =

@@ -97,6 +97,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TextStyle.Subtitle2.Black.Medium" parent="SFProFont.Medium">
+        <item name="android:textSize">@dimen/font_subtitle_2</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextStyle.Headline6.Black.Bold" parent="SFProFont.Bold">
         <item name="android:textSize">@dimen/font_headline_6</item>
         <item name="android:textColor">@color/black</item>
