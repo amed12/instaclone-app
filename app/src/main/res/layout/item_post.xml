@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/line_divider_post"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right_post"
+        app:layout_constraintStart_toStartOf="@id/guideline_left_post"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/line_divider_post"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_padding_small"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/iv_post_user" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-1dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="1dp" />
+
+    <ImageView
+        android:id="@+id/iv_post_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_padding_small"
+        android:contentDescription="@string/cd_default_image"
+        android:src="@drawable/ic_account_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/TextStyle.Caption.Black.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_small"
+        android:text="Username"
+        app:layout_constraintBottom_toBottomOf="@id/iv_post_user"
+        app:layout_constraintEnd_toStartOf="@id/btn_action_post"
+        app:layout_constraintStart_toEndOf="@id/iv_post_user"
+        app:layout_constraintTop_toTopOf="@id/iv_post_user" />
+
+    <ImageButton
+        android:id="@+id/btn_action_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_padding_xsmall"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/cd_default_image"
+        android:src="@drawable/ic_action_post"
+        app:layout_constraintBottom_toBottomOf="@id/iv_post_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_post_user" />
+
+    <ImageView
+        android:id="@+id/iv_post_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/cd_default_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/line_divider_post"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageButton
+        android:id="@+id/btn_love_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/cd_default_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_post_content" />
+
+    <ImageButton
+        android:id="@+id/btn_comment_post"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/cd_default_image"
+        android:src="@drawable/ic_comment"
+        app:layout_constraintBottom_toBottomOf="@id/btn_love_post"
+        app:layout_constraintStart_toEndOf="@id/btn_love_post"
+        app:layout_constraintTop_toTopOf="@id/btn_love_post" />
+
+    <ImageButton
+        android:id="@+id/btn_dm_post"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/cd_default_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_dm"
+        app:layout_constraintBottom_toBottomOf="@id/btn_love_post"
+        app:layout_constraintEnd_toStartOf="@+id/btn_bookmark_post"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/btn_comment_post"
+        app:layout_constraintTop_toTopOf="@id/btn_love_post" />
+
+    <TextView
+        android:id="@+id/tv_like_count_post"
+        style="@style/TextStyle.Caption.Black.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_normal"
+        android:layout_marginEnd="@dimen/margin_padding_normal"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintTop_toBottomOf="@id/btn_love_post"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/tv_description_post"
+        style="@style/TextStyle.Caption.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_normal"
+        android:layout_marginEnd="@dimen/margin_padding_normal"
+        android:ellipsize="end"
+        android:lines="2"
+        app:layout_constraintTop_toBottomOf="@id/tv_like_count_post"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/tv_comment_post"
+        style="@style/TextStyle.Caption.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_normal"
+        android:layout_marginTop="@dimen/margin_padding_xtiny"
+        android:layout_marginEnd="@dimen/margin_padding_normal"
+        android:layout_marginBottom="@dimen/margin_padding_normal"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description_post"
+        tools:text="@tools:sample/lorem" />
+
+    <ImageButton
+        android:id="@+id/btn_bookmark_post"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="@string/cd_default_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_dm"
+        app:layout_constraintBottom_toBottomOf="@id/btn_love_post"
+        app:layout_constraintEnd_toEndOf="@id/btn_action_post"
+        app:layout_constraintTop_toTopOf="@id/btn_love_post" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

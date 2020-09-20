@@ -74,6 +74,16 @@
         <item name="android:textColor">@color/grey_3</item>
     </style>
 
+    <style name="TextStyle.Caption.Black" parent="SFProFont.Regular">
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Caption.Black.Medium" parent="SFProFont.Medium">
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextStyle.Subtitle2.Black.Bold" parent="SFProFont.Bold">
         <item name="android:textSize">@dimen/font_subtitle_2</item>
         <item name="android:textColor">@color/black</item>
