@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.user.UserFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_user" />
 
-</FrameLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_xsmall"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/cd_default_image"
+                    android:src="@drawable/ic_clear_stories"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_edit_profile_user" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/transparent"
+                    android:src="@drawable/ic_add_circle_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/tv_count_post_user"
+                    style="@style/TextStyle.Caption.Black.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_count_followers"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/TextStyle.Caption.Black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:text="@string/lbl_posts"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_count_post_user"
+                    app:layout_constraintStart_toStartOf="@+id/tv_count_post_user"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_count_post_user"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="@dimen/img_height"
+                    android:layout_height="@dimen/img_height"
+                    android:layout_margin="@dimen/margin_padding_normal"
+                    android:src="@drawable/ic_account_circle_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/TextStyle.Caption.Black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_followers"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_count_followers"
+                    app:layout_constraintStart_toEndOf="@+id/tv_count_post_user"
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_post_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_tiny"
+                    android:layout_marginBottom="@dimen/margin_padding_tiny"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_user_black_2"
+                    app:spanCount="3"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_post_grid" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/TextStyle.Caption.Black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Following"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_count_following"
+                    app:layout_constraintStart_toEndOf="@+id/tv_count_followers"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/tv_username_user"
+                    style="@style/TextStyle.Caption.Black.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_normal"
+                    android:layout_marginEnd="@dimen/margin_padding_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                    tools:text="Username" />
+
+                <TextView
+                    android:id="@+id/tv_bio_user"
+                    style="@style/TextStyle.Caption.Black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:layout_marginEnd="@dimen/margin_padding_normal"
+                    android:lines="3"
+                    android:text="@string/text_lorem"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_username_user"
+                    app:layout_constraintTop_toBottomOf="@id/tv_username_user" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edit_profile_user"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_normal"
+                    android:background="@color/black"
+                    android:fontFamily="@font/sf_ui_bold"
+                    android:padding="0dp"
+                    android:text="@string/btn_edit_profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_bio_user"
+                    app:layout_constraintStart_toStartOf="@+id/tv_bio_user"
+                    app:layout_constraintTop_toBottomOf="@id/tv_bio_user" />
+
+                <ImageButton
+                    android:id="@+id/btn_grid_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_xsmall"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="@color/transparent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_grid_on_24"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+                <View
+                    android:id="@+id/divider_user_black_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_padding_xtiny"
+                    android:background="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/btn_grid_user" />
+
+                <TextView
+                    android:id="@+id/tv_count_followers"
+                    style="@style/TextStyle.Caption.Black.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_count_post_user"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_count_following"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_count_post_user"
+                    app:layout_constraintTop_toTopOf="@+id/tv_count_post_user" />
+
+                <TextView
+                    android:id="@+id/tv_count_following"
+                    style="@style/TextStyle.Caption.Black.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_count_followers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_count_followers"
+                    app:layout_constraintTop_toTopOf="@+id/tv_count_followers" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

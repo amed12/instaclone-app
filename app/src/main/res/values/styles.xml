@@ -44,6 +44,7 @@
 
     <style name="SFProFont.Regular">
         <item name="android:fontFamily">@font/sf_ui_regular</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="SFProFont.SemiBold">

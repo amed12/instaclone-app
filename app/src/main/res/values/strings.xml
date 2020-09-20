@@ -49,5 +49,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod, ligula eu laoreet iaculis, magna quam vulputate nulla, vel tincidunt ante nisi sit amet odio. Mauris ornare risus tincidunt dignissim efficitur. Donec suscipit ullamcorper nulla, vel lobortis eros viverra vel. Duis faucibus, dui in mattis mollis, risus neque hendrerit elit, sit amet accumsan libero erat ut lectus. Quisque feugiat aliquet ante, quis tempor erat volutpat vitae. Etiam dapibus aliquam nibh. Donec viverra nisl libero, ut facilisis lacus semper sed. Nullam pharetra nisi vel purus ullamcorper, vel tincidunt velit accumsan. Duis ut cursus nisi. Maecenas non ipsum nec libero dignissim finibus quis at metus. Suspendisse potenti. Cras lobortis pharetra odio, pharetra vehicula dolor iaculis ac. Pellentesque at orci sapien</string>
     <string name="lbl_under_construction">Under Construction</string>
+    <string name="lbl_posts">Posts</string>
+    <string name="lbl_followers">Followers</string>
+    <string name="btn_edit_profile">Edit Profile</string>
 
 </resources>
