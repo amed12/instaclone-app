@@ -72,6 +72,9 @@ dependencies {
     implementation 'com.google.gms:google-services:4.3.3'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
+    implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
 
@@ -83,6 +86,7 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.github.mobileVascomm:VascWork-Android:v1.1'
+    implementation 'com.wang.avi:library:2.1.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_xnormal"
-            android:hint="@string/hint_username"
+            android:hint="@string/hint_email"
             app:layout_constraintTop_toBottomOf="@id/iv_register">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:lines="1" />
+                android:lines="1"
+                android:textAppearance="@style/TextStyle.Subtitle2.Black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

@@ -52,5 +52,10 @@
     <string name="lbl_posts">Posts</string>
     <string name="lbl_followers">Followers</string>
     <string name="btn_edit_profile">Edit Profile</string>
+    <string name="lbl_warning_fill_field">Please fill this field!</string>
+    <string name="lbl_alert_password_rule">must contains one digit from 0–9,uppercase characters, length at least 8 characters and maximum of 20</string>
+    <string name="alert_email_rule">Please input valid email</string>
+    <string name="text_pass_not_match">Password didn\'t match</string>
+    <string name="text_alert_user_exist">\"User with this email already exist.\"</string>
 
 </resources>

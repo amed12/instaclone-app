@@ -23,6 +23,20 @@ const val KEY_DATA = "data"
 const val KEY_MESSAGE = "message"
 const val KEY_STATUS = "status"
 const val KEY_CODE = "code"
+
+//Data network
+const val KEY_USERNAME = "username"
+const val KEY_FULL_NAME = "fullname"
+const val KEY_WEBSITE = "website"
+const val KEY_BIO = "bio"
+const val KEY_PHONE = "phone"
+const val KEY_GENDER = "gender"
+const val KEY_IMAGE_PROFILE = "image-profile"
+const val KEY_EMAIL = "email"
+
+const val KEY_PASS = "pass"
+
+
 val COMPLEX_DATE_FORMAT = SimpleDateFormat("EEEE, dd MMMM yyyy hh:mm", Locale("id"))
 val FULL_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale("id"))
 val STANDARD_DATE_FORMAT = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale("id"))

@@ -15,30 +15,24 @@
 
 package com.fathullahachmad.instaclone.ui.auth
 
-import android.app.Activity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.fathullahachmad.instaclone.R
-import com.fathullahachmad.instaclone.ui.ui.login.LoggedInUserView
-import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModel
-import com.fathullahachmad.instaclone.ui.ui.login.LoginViewModelFactory
-import com.fathullahachmad.instaclone.utils.AppWireframe
-import com.fathullahachmad.instaclone.utils.intent
+import com.fathullahachmad.instaclone.utils.*
+import com.fathullahachmad.instaclone.utils.dialog.DialogLoading
+import com.vascomm.vascwork.additional.validation.RequireRule
+import com.vascomm.vascwork.additional.validation.Validation
+import com.vascomm.vascwork.additional.validation.ValidationInterface
+import com.vascomm.vascwork.architecture.core.Result
+import com.vascomm.vascwork.architecture.core.ViewStateInterface
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
-
-    private lateinit var loginViewModel: LoginViewModel
+class LoginActivity : AppCompatActivity(), ViewStateInterface, ValidationInterface {
+    private val validation by lazy { Validation(this) }
+    private val authModule by lazy { AuthModule(this, this) }
+    private val dialogLoading by lazy { DialogLoading(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,127 +40,89 @@ class LoginActivity : AppCompatActivity() {
         tv_go_to_register?.setOnClickListener {
             startActivity(intent(RegisterActivity::class.java))
         }
-        val login = findViewById<Button>(R.id.login)
-
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
-
-        loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
-            val loginState = it ?: return@Observer
-
-            // disable login button unless both username / password is valid
-            login.apply {
-                if (loginState.isDataValid) {
-                    isEnabled = true
-                    background.setTint(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.colorAccent
-                        )
-                    )
-                    val wireframe = AppWireframe().common
-                    setOnClickListener {
-                        wireframe.main(this@LoginActivity)
-                    }
-                } else {
-                    isEnabled = false
-                    background.setTint(
-                        ContextCompat.getColor(
-                            this@LoginActivity,
-                            R.color.colorAccentSecondary
-                        )
-                    )
-                    setOnClickListener {
-                        //
-                    }
-                }
-
-            }
-
-            if (loginState.usernameError != null) {
-                til_username_login.error = getString(loginState.usernameError)
-            }
-            if (loginState.passwordError != null) {
-                til_password_login.error = getString(loginState.passwordError)
-            }
-        })
-
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
-            val loginResult = it ?: return@Observer
-
-//            loading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
-            }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
-        })
-
-        edt_username_register.afterTextChanged {
-            loginViewModel.loginDataChanged(
-                edt_username_register.text.toString(),
-                edt_password_register.text.toString()
+        checkStateButton()
+        validation.apply {
+            registerField(
+                edt_username_register, til_username_login, KEY_EMAIL, mutableListOf(
+                    RequireRule(getString(R.string.lbl_warning_fill_field))
+                )
+            )
+            registerField(
+                edt_password_register, til_password_login, KEY_PASS, mutableListOf(
+                    RequireRule(getString(R.string.lbl_warning_fill_field))
+                )
             )
         }
-
         edt_password_register.apply {
-            afterTextChanged {
-                loginViewModel.loginDataChanged(
-                    edt_username_register.text.toString(),
-                    edt_password_register.text.toString()
-                )
-            }
-
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            edt_username_register.text.toString(),
-                            edt_password_register.text.toString()
-                        )
+                    EditorInfo.IME_ACTION_DONE -> checkStateButton()
                 }
                 false
             }
+        }
+    }
 
-            login.setOnClickListener {
-//                loading.visibility = View.VISIBLE
-                loginViewModel.login(edt_username_register.text.toString(), edt_password_register.text.toString())
+    private fun checkStateButton() {
+        login.apply {
+            if (anyNotNull(
+                    edt_username_register.text.toString(),
+                    edt_password_register.text.toString()
+                )
+            ) {
+                isEnabled = true
+                background.setTint(
+                    ContextCompat.getColor(
+                        this@LoginActivity,
+                        R.color.colorAccent
+                    )
+                )
+                setOnClickListener {
+                    validation.validation()
+                }
+            } else {
+                isEnabled = false
+                background.setTint(
+                    ContextCompat.getColor(
+                        this@LoginActivity,
+                        R.color.colorAccentSecondary
+                    )
+                )
+                setOnClickListener {
+                    //
+                }
+            }
+        }
+
+    }
+
+    override fun onFailure(result: Result) {
+        result.apply {
+            when {
+                message.contains("no user record") -> {
+                    til_username_login.error = message
+                }
+                message.contains("The password is invalid") -> {
+                    til_password_login.error = message
+                }
+                else -> {
+                    showToast(message)
+                }
             }
         }
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+    override fun onLoading(result: Result) {
+        dialogLoading.show(result.isLoading)
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    override fun onSuccess(result: Result) {
+        AppWireframe().common.main(this)
     }
-}
 
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
+    override fun validationSuccess(data: HashMap<String, String>) {
+        authModule.login(data[KEY_EMAIL].toString(), data[KEY_PASS].toString())
+    }
 
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
 }

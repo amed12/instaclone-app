@@ -36,10 +36,9 @@ class AppSession(context: Context) {
     }
 
     /* store user data and token*/
-    fun createSession(dataUser: JSONObject, token: String, customInput: String) {
+    fun createSession(dataUser: JSONObject) {
         edit.apply {
             putString(KEY_USER, dataUser.toString())
-            putString(KEY_TOKEN, token)
             commit()
         }
     }

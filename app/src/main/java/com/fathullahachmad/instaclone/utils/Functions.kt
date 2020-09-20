@@ -205,6 +205,9 @@ fun Context?.errorMessage() = this?.getString(R.string.text_message_error_connec
 fun Context?.connectionProblemMessage() =
     this?.getString(R.string.text_alert_internet_connection) ?: ""
 
+fun Context?.userAlreadyExistMessage() =
+    this?.getString(R.string.text_alert_user_exist) ?: ""
+
 fun JSONObject.message(): String = try {
     this.getString(KEY_MESSAGE)
 } catch (e: Exception) {
@@ -232,7 +235,7 @@ fun NavDirections.navActionDirectly(view: View) {
 fun Any.objectToJsonObjectString(): String = Gson().toJson(this)
 
 
-fun String.objectToJsonObject(): JSONObject {
+fun String.stringJsonToJsonObject(): JSONObject {
     return JSONObject(this)
 }
 
@@ -307,4 +310,4 @@ fun TextView.setGradationColor() {
     this.paint.shader = textShader
 }
 
-
+fun <T> anyNotNull(vararg elements: T) = elements.any { it != null && it != "" }
